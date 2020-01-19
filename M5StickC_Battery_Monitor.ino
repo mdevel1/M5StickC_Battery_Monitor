@@ -1,7 +1,7 @@
 /*
  *  M5StickC Battery Monitor
  *
- *  Reports battery status on serial port and Lcd.
+ *  Reports battery status on serial ports and LCD.
  *  Needs a 3.3V compatible serial module on the receiving end.
  *  Only the output pin (defined in serial_TX_pin) and GND
  *  needs to be connected.
@@ -39,27 +39,26 @@ void setup() {
 
 
 void loop() {
-    log_all("GetBatState: %d\r\n", M5.Axp.GetBatState());
-    log_all("GetCoulombchargeData: %ld\r\n", M5.Axp.GetCoulombchargeData());
-    log_all("GetCoulombdischargeData: %ld\r\n", M5.Axp.GetCoulombdischargeData());
-    log_all("GetCoulombData: %.4f\r\n", M5.Axp.GetCoulombData());
+    log_all("BatU:%8.3f\r\n", M5.Axp.GetBatVoltage());
+    log_all("BatI:%8.3f\r\n", M5.Axp.GetBatCurrent());
+    log_all("VinU:%8.3f\r\n", M5.Axp.GetVinVoltage());
+    log_all("VinI:%8.3f\r\n", M5.Axp.GetVinCurrent());
+    log_all("VBusU:%7.3f\r\n", M5.Axp.GetVBusVoltage());
+    log_all("VBusI:%7.3f\r\n", M5.Axp.GetVBusCurrent());
     log_serial("\r\n");
-    log_all("GetBatVoltage: %.4f\r\n", M5.Axp.GetBatVoltage());
-    log_all("GetBatCurrent: %.4f\r\n", M5.Axp.GetBatCurrent());
-    log_all("GetVinVoltage: %.4f\r\n", M5.Axp.GetVinVoltage());
-    log_all("GetVinCurrent: %.4f\r\n", M5.Axp.GetVinCurrent());
-    log_all("GetVBusVoltage: %.4f\r\n", M5.Axp.GetVBusVoltage());
-    log_all("GetVBusCurrent: %.4f\r\n", M5.Axp.GetVBusCurrent());
+    log_all("TInAXP: %.1fC\r\n", M5.Axp.GetTempInAXP192());
     log_serial("\r\n");
-    log_all("GetTempInAXP192: %.1fC\r\n", M5.Axp.GetTempInAXP192());
+    log_all("BatP: %7.3f\r\n", M5.Axp.GetBatPower());
+    log_all("BatChargeI: %14.3f\r\n", M5.Axp.GetBatChargeCurrent());
+    log_all("APSU: %7.3f\r\n", M5.Axp.GetAPSVoltage());
+    log_all("BatCoulombIn:%13.3f\r\n", M5.Axp.GetBatCoulombInput());
+    log_all("BatCoulombOut:%12.3f\r\n", M5.Axp.GetBatCoulombOut());
+    log_serial("CoulombchargeData: %ld\r\n", M5.Axp.GetCoulombchargeData());
+    log_serial("CoulombdischargeData: %ld\r\n", M5.Axp.GetCoulombdischargeData());
+    log_all("CoulombData: %13.3f\r\n", M5.Axp.GetCoulombData());
     log_serial("\r\n");
-    log_all("GetBatPower: %.4f\r\n", M5.Axp.GetBatPower());
-    log_all("GetBatChargeCurrent: %.4f\r\n", M5.Axp.GetBatChargeCurrent());
-    log_all("GetAPSVoltage: %.4f\r\n", M5.Axp.GetAPSVoltage());
-    log_all("GetBatCoulombInput: %.4f\r\n", M5.Axp.GetBatCoulombInput());
-    log_all("GetBatCoulombOut: %.4f\r\n", M5.Axp.GetBatCoulombOut());
-    log_serial("\r\n");
-    log_all("GetWarningLevel: %d\r\r\n", M5.Axp.GetWarningLevel());
+    log_all("BatState:%4d\r\n", M5.Axp.GetBatState());
+    log_all("WarningLevel:%13d\r\r\n", M5.Axp.GetWarningLevel());
 
     log_serial("-----\r\n");
     M5.Lcd.setCursor(0, 0);
