@@ -1,15 +1,15 @@
 /*
+ *  M5StickC Battery Monitor
+ *
+ *  Reports battery status on serial port and Lcd.
+ *  Needs a 3.3V compatible serial module on the receiving end.
+ *  Only the output pin (defined in serial_TX_pin) and GND
+ *  needs to be connected.
+ *
+ *  Copyright (C) 2020 MDE
+ *  Licensed under the GNU GPLv3
+ */
 
-    M5StickC Battery Monitor
-
-    Reports battery status on serial port and LCD.
-    Needs a 3.3V compatible serial module on the receiving end.
-    Only the output pin (defined in serial_TX_pin) and GND
-    needs to be connected.
-
-    Copyright (C) 2020 MDE
-    Licensed under the GNU GPLv3
-*/
 
 #include <M5StickC.h>
 
