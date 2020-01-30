@@ -31,6 +31,7 @@
 void setup() {
     M5.begin();
     M5.Axp.EnableCoulombcounter();
+    M5.Axp.ClearCoulombcounter();
 
     Serial.begin(115200);
     Serial1.begin(115200, SERIAL_8N1, 26, 0);
